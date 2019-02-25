@@ -10,19 +10,14 @@ using System.Windows.Forms;
 
 namespace VirtualStore
 {
-    public partial class Form1 : Form
+    public partial class AddNewProduct : Form
     {
-        public Form1()
+        public AddNewProduct()
         {
             InitializeComponent();
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void addNewToolStripMenuItem_Click(object sender, EventArgs e)
+        private void label1_Click(object sender, EventArgs e)
         {
 
         }

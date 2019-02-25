@@ -12,6 +12,7 @@ namespace VirtualStore
 {
     public partial class Form1 : Form
     {
+        AddNewProduct addNewProduct = new AddNewProduct();
         public Form1()
         {
             InitializeComponent();
@@ -25,6 +26,11 @@ namespace VirtualStore
         private void addNewToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void addNewProductToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            addNewProduct.Show();
         }
     }
 }

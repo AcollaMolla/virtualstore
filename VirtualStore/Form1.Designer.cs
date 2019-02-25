@@ -104,6 +104,7 @@
             this.addNewProductToolStripMenuItem.Name = "addNewProductToolStripMenuItem";
             this.addNewProductToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.addNewProductToolStripMenuItem.Text = "Add new product";
+            this.addNewProductToolStripMenuItem.Click += new System.EventHandler(this.addNewProductToolStripMenuItem_Click);
             // 
             // removeProductToolStripMenuItem
             // 

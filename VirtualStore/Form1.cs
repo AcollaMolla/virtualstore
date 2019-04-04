@@ -14,6 +14,8 @@ namespace VirtualStore
     {
         AddNewProduct addNewProduct = new AddNewProduct();
         Cart cart = new Cart();
+        Stack<int> productId = new Stack<int>();
+        Stack<int> qty = new Stack<int>();
         public Form1()
         {
             InitializeComponent();
@@ -46,16 +48,18 @@ namespace VirtualStore
 
         private void button2_Click_1(object sender, EventArgs e)
         {
-            var stack = cart.getProductId();
-            foreach(int i in stack)
+            if(productId != cart.getProductId()) //Only perform this if the cart has been changed
             {
-                richTextBox1.AppendText(i.ToString() + "\n");
-            }
-
-            stack = cart.getQty();
-            foreach (int i in stack)
-            {
-                richTextBox2.AppendText(i.ToString() + "\n");
+                productId = cart.getProductId();
+                foreach (int i in productId)
+                {
+                    richTextBox1.AppendText(i.ToString() + "\n");
+                }
+                qty = cart.getQty();
+                foreach (int i in qty)
+                {
+                    richTextBox2.AppendText(i.ToString() + "\n");
+                }
             }
         }
     }

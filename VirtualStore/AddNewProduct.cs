@@ -15,10 +15,12 @@ namespace VirtualStore
         Product product;
         private string name;
         private int productID;
+        DatabaseHandler databaseHandler;
         public AddNewProduct()
         {
             InitializeComponent();
             product = new Product();
+            databaseHandler = new DatabaseHandler();
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -42,6 +44,7 @@ namespace VirtualStore
             this.productID = Convert.ToInt32(textBox2.Text);
             product.setName(this.name);
             product.setId(this.productID);
+            databaseHandler.writeToCSV();
         }
     }
 }

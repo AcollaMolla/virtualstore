@@ -66,6 +66,7 @@
             // 
             // domainUpDown1
             // 
+            this.domainUpDown1.Enabled = false;
             this.domainUpDown1.Location = new System.Drawing.Point(94, 50);
             this.domainUpDown1.Name = "domainUpDown1";
             this.domainUpDown1.Size = new System.Drawing.Size(313, 20);
@@ -91,13 +92,13 @@
             // 
             // button1
             // 
-            this.button1.Enabled = false;
             this.button1.Location = new System.Drawing.Point(12, 122);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(196, 42);
             this.button1.TabIndex = 6;
             this.button1.Text = "Add";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 

@@ -48,18 +48,20 @@ namespace VirtualStore
 
         private void button2_Click_1(object sender, EventArgs e)
         {
-            if(productId != cart.getProductId()) //Only perform this if the cart has been changed
+            showCart();
+        }
+
+        private void showCart()
+        {
+            richTextBox1.Text = "";
+            richTextBox2.Text = "";
+            foreach (int i in cart.getProductId())
             {
-                productId = cart.getProductId();
-                foreach (int i in productId)
-                {
-                    richTextBox1.AppendText(i.ToString() + "\n");
-                }
-                qty = cart.getQty();
-                foreach (int i in qty)
-                {
-                    richTextBox2.AppendText(i.ToString() + "\n");
-                }
+                richTextBox1.AppendText(i.ToString() + "\n");
+            }
+            foreach (int i in cart.getQty())
+            {
+                richTextBox2.AppendText(i.ToString() + "\n");
             }
         }
     }

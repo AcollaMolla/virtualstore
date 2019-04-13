@@ -1,4 +1,4 @@
-﻿using CsvHelper;
+﻿
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -12,13 +12,14 @@ namespace VirtualStore
     {
         private int id;
         private string name;
-        public void writeToCSV()
+        public void writeToCSV(List<Product> list)
         {
-            List<string> mylist = new List<string>(new string[] { "element1", "element2", "element3" });
-            using (var writer = new StreamWriter("file.csv"))
-            using (var csv = new CsvWriter(writer))
+            foreach(Product p in list)
             {
-                csv.WriteRecords("test");
+                Console.Out.WriteLine(p.Name);
+                Console.Out.WriteLine(p.ID);
+                Console.Out.WriteLine(p.Price);
+                Console.Out.WriteLine(p.QTY);
             }
         }
     }

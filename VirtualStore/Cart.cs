@@ -12,7 +12,7 @@ namespace VirtualStore
         private int qty = 0;
         Stack<int> testProductId = new Stack<int>();
         Stack<int> testQty = new Stack<int>();
-        Product product = new Product();
+       // Product product = new Product();
 
         public void addProduct(int id, int qty)
         {

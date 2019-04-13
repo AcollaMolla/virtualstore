@@ -6,51 +6,76 @@ using System.Threading.Tasks;
 
 namespace VirtualStore
 {
-    class Product
+    public class Product
     {
         private string name;
-        private float price;
         private int id;
+        private float price;
         private int qty;
 
-        public string getName()
-        {
-            return this.name;
-        }
+        private List<Product> products = new List<Product>();
 
-        public void setName(string name)
+        public Product(string name, int id, float price, int qty)
         {
             this.name = name;
-        }
-
-        public float getPrice()
-        {
-            return this.price;
-        }
-
-        public void setPrice(float price)
-        {
-            this.price = price;
-        }
-
-        public int getId()
-        {
-            return this.id;
-        }
-
-        public void setId(int id)
-        {
             this.id = id;
+            this.price = price;
+            this.qty = qty;
         }
 
-        public int getQty()
+        public Product()
         {
-            return this.qty;
+
         }
 
-        public void setQty(int qty)
+        public string Name
         {
-            this.qty = qty; //Perhaps this.qty = this.qty + qty?
+            get
+            {
+                return name;
+            }
+            set
+            {
+                name = value;
+            }
         }
+
+        public int ID
+        {
+            get
+            {
+                return id;
+            }
+            set
+            {
+                id = value;
+            }
+        }
+
+        public float Price
+        {
+            get
+            {
+                return price;
+            }
+            set
+            {
+                price = value;
+            }
+        }
+
+        public int QTY
+        {
+            get
+            {
+                return qty;
+            }
+            set
+            {
+                qty = value;
+            }
+        }
+
+
     }
 }

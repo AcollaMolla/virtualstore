@@ -16,6 +16,7 @@ namespace VirtualStore
         Cart cart = new Cart();
         Stack<int> productId = new Stack<int>();
         Stack<int> qty = new Stack<int>();
+        Product p = new Product();
         public Form1()
         {
             InitializeComponent();
@@ -41,28 +42,34 @@ namespace VirtualStore
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            cart.addProduct(Int32.Parse(textBox1.Text), Decimal.ToInt32(numericUpDown1.Value));
-        }
-
         private void button2_Click_1(object sender, EventArgs e)
         {
-            showCart();
         }
 
-        private void showCart()
+        private void tabPage1_Click(object sender, EventArgs e)
         {
-            richTextBox1.Text = "";
-            richTextBox2.Text = "";
-            foreach (int i in cart.getProductId())
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+        }
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+            foreach(Product p in addNewProduct.getAllProducts())
             {
-                richTextBox1.AppendText(i.ToString() + "\n");
             }
-            foreach (int i in cart.getQty())
-            {
-                richTextBox2.AppendText(i.ToString() + "\n");
-            }
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            button1.Enabled = true;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            listBox2.Items.Add("test"); 
         }
     }
 }

@@ -17,6 +17,7 @@ namespace VirtualStore
         Stack<int> productId = new Stack<int>();
         Stack<int> qty = new Stack<int>();
         Product p = new Product();
+        private string[] row = new string[4];
         public Form1()
         {
             InitializeComponent();
@@ -56,9 +57,14 @@ namespace VirtualStore
         }
         private void button3_Click(object sender, EventArgs e)
         {
-
             foreach(Product p in addNewProduct.getAllProducts())
             {
+                row[0] = p.Name;
+                row[1] = p.ID.ToString();
+                row[2] = p.Price.ToString();
+                row[3] = p.QTY.ToString();
+                ListViewItem item = new ListViewItem(row);
+                listView1.Items.Add(item);
             }
         }
 

@@ -22,6 +22,14 @@ namespace VirtualStore
                 products.Add(new Product(name, id, price, qty));
                 Console.WriteLine("Added to list");
             }
+            else
+            {
+                foreach (Product p in products)
+                {
+                    if (p.ID == id)
+                        p.QTY += qty;
+                }
+            }
         }
 
         public List<Product> getAllProducts()
@@ -46,7 +54,7 @@ namespace VirtualStore
         public void decrementProduct(int id)
         {
             foreach(Product p in products){
-                if (p.ID == id)
+                if (p.ID == id && p.QTY > 0)
                     p.QTY--;
             }
         }

@@ -73,14 +73,13 @@ namespace VirtualStore
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            addToCartButton.Enabled = true;
+            button1.Enabled = true;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             ListViewItem item = listView1.SelectedItems[0];
-            Console.WriteLine(item.SubItems[0].Text);
-            cart.addProduct(item.SubItems[0].Text, Convert.ToInt32(item.SubItems[1].Text), float.Parse(item.SubItems[2].Text, CultureInfo.InvariantCulture.NumberFormat), 1);
+            cart.addProduct(item.SubItems[0].Text, Convert.ToInt32(item.SubItems[1].Text), float.Parse(item.SubItems[2].Text, CultureInfo.InvariantCulture.NumberFormat), 1, Convert.ToInt32(item.SubItems[3].Text));
             products.decrementProduct(Convert.ToInt32(item.SubItems[1].Text));
             listUpdated();
             listView2.Items.Clear();
@@ -92,12 +91,12 @@ namespace VirtualStore
                 ListViewItem item2 = new ListViewItem(row);
                 listView2.Items.Add(item2);
             }
-            addToCartButton.Enabled = false;
+            button1.Enabled = false;
         }
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            addToCartButton.Enabled = true;
+            button1.Enabled = true;
         }
 
         public void listUpdated()
@@ -112,6 +111,29 @@ namespace VirtualStore
                 ListViewItem item = new ListViewItem(row);
                 listView1.Items.Add(item);
             }
+        }
+
+        private void button2_Click_2(object sender, EventArgs e)
+        {
+            ListViewItem item = listView2.SelectedItems[0];
+            products.addProduct(item.SubItems[0].Text, Convert.ToInt32(item.SubItems[1].Text), float.Parse(item.SubItems[2].Text, CultureInfo.InvariantCulture.NumberFormat),Convert.ToInt32(item.SubItems[3].Text));
+            cart.decrementProduct(Convert.ToInt32(item.SubItems[1].Text));
+            listUpdated();
+            listView1.Items.Clear();
+            foreach (Product p in cart.getAllProducts())
+            {
+                row[0] = p.Name;
+                row[1] = p.Price.ToString();
+                row[2] = p.QTY.ToString();
+                ListViewItem item2 = new ListViewItem(row);
+                listView1.Items.Add(item2);
+            }
+            button1.Enabled = false;
+        }
+
+        private void listView2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            button2.Enabled = true;
         }
     }
 }

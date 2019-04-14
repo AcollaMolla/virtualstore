@@ -30,13 +30,17 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.listView2 = new System.Windows.Forms.ListView();
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.listView1 = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.button3 = new System.Windows.Forms.Button();
-            this.addToCartButton = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.productsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -45,10 +49,7 @@
             this.addDeliveryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewAllProductsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.listView2 = new System.Windows.Forms.ListView();
-            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.button2 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -71,10 +72,11 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.button2);
             this.tabPage1.Controls.Add(this.listView2);
             this.tabPage1.Controls.Add(this.listView1);
             this.tabPage1.Controls.Add(this.button3);
-            this.tabPage1.Controls.Add(this.addToCartButton);
+            this.tabPage1.Controls.Add(this.button1);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -83,6 +85,37 @@
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
             this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
+            // 
+            // listView2
+            // 
+            this.listView2.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader5,
+            this.columnHeader7,
+            this.columnHeader8});
+            this.listView2.FullRowSelect = true;
+            this.listView2.GridLines = true;
+            this.listView2.Location = new System.Drawing.Point(645, 6);
+            this.listView2.MultiSelect = false;
+            this.listView2.Name = "listView2";
+            this.listView2.Size = new System.Drawing.Size(302, 264);
+            this.listView2.TabIndex = 14;
+            this.listView2.UseCompatibleStateImageBehavior = false;
+            this.listView2.View = System.Windows.Forms.View.Details;
+            this.listView2.SelectedIndexChanged += new System.EventHandler(this.listView2_SelectedIndexChanged);
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "Name";
+            this.columnHeader5.Width = 111;
+            // 
+            // columnHeader7
+            // 
+            this.columnHeader7.Text = "Price";
+            // 
+            // columnHeader8
+            // 
+            this.columnHeader8.Text = "Amount";
+            this.columnHeader8.Width = 75;
             // 
             // listView1
             // 
@@ -124,24 +157,24 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(314, 6);
+            this.button3.Location = new System.Drawing.Point(6, 276);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(112, 23);
             this.button3.TabIndex = 11;
-            this.button3.Text = "Update listbox";
+            this.button3.Text = "Update inventory";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // addToCartButton
+            // button1
             // 
-            this.addToCartButton.Enabled = false;
-            this.addToCartButton.Location = new System.Drawing.Point(314, 64);
-            this.addToCartButton.Name = "addToCartButton";
-            this.addToCartButton.Size = new System.Drawing.Size(325, 156);
-            this.addToCartButton.TabIndex = 2;
-            this.addToCartButton.Text = "Lägg till!";
-            this.addToCartButton.UseVisualStyleBackColor = true;
-            this.addToCartButton.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Enabled = false;
+            this.button1.Location = new System.Drawing.Point(314, 64);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(325, 44);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "------>";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // tabPage2
             // 
@@ -208,35 +241,16 @@
             this.viewAllProductsToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.viewAllProductsToolStripMenuItem.Text = "View all products";
             // 
-            // listView2
+            // button2
             // 
-            this.listView2.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader5,
-            this.columnHeader7,
-            this.columnHeader8});
-            this.listView2.FullRowSelect = true;
-            this.listView2.GridLines = true;
-            this.listView2.Location = new System.Drawing.Point(645, 6);
-            this.listView2.MultiSelect = false;
-            this.listView2.Name = "listView2";
-            this.listView2.Size = new System.Drawing.Size(302, 264);
-            this.listView2.TabIndex = 14;
-            this.listView2.UseCompatibleStateImageBehavior = false;
-            this.listView2.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader5
-            // 
-            this.columnHeader5.Text = "Name";
-            this.columnHeader5.Width = 111;
-            // 
-            // columnHeader7
-            // 
-            this.columnHeader7.Text = "Price";
-            // 
-            // columnHeader8
-            // 
-            this.columnHeader8.Text = "Amount";
-            this.columnHeader8.Width = 75;
+            this.button2.Enabled = false;
+            this.button2.Location = new System.Drawing.Point(314, 127);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(325, 44);
+            this.button2.TabIndex = 15;
+            this.button2.Text = "<------";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click_2);
             // 
             // Form1
             // 
@@ -269,7 +283,7 @@
         private System.Windows.Forms.ToolStripMenuItem addDeliveryToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem viewAllProductsToolStripMenuItem;
-        private System.Windows.Forms.Button addToCartButton;
+        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.ColumnHeader columnHeader1;
@@ -280,6 +294,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader5;
         private System.Windows.Forms.ColumnHeader columnHeader7;
         private System.Windows.Forms.ColumnHeader columnHeader8;
+        private System.Windows.Forms.Button button2;
     }
 }
 

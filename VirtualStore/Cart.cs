@@ -10,7 +10,7 @@ namespace VirtualStore
     {
         private static List<Product> products = new List<Product>();
 
-        public void addProduct(string name, int id, float price, int amount)
+        public void addProduct(string name, int id, float price, int amount, int amountLeft)
         {
             if (!productAlreadyExist(id))
             {
@@ -18,7 +18,7 @@ namespace VirtualStore
                 Console.WriteLine("Product added to cart");
             }
             else
-                incrementAmount(id);
+                incrementAmount(id, amountLeft);
         }
 
         private bool productAlreadyExist(int id)
@@ -33,14 +33,26 @@ namespace VirtualStore
             return false;
         }
 
-        private void incrementAmount(int id)
+        private void incrementAmount(int id, int amountLeft)
         {
             foreach (Product p in products)
             {
                 if (p.ID == id)
                 {
-                    p.QTY++;
+                    if (amountLeft > 0)
+                        p.QTY++;
+                    else
+                        Console.WriteLine("Out of stock!");
                 }
+            }
+        }
+
+        public void decrementProduct(int id)
+        {
+            foreach (Product p in products)
+            {
+                if (p.ID == id && p.QTY > 0)
+                    p.QTY--;
             }
         }
 

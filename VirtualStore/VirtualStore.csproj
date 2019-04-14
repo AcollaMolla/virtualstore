@@ -67,6 +67,7 @@
     </Compile>
     <Compile Include="DatabaseHandler.cs" />
     <Compile Include="Product.cs" />
+    <Compile Include="Products.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AddNewProduct.resx">

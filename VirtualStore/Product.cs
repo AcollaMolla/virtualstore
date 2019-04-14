@@ -13,7 +13,7 @@ namespace VirtualStore
         private float price;
         private int qty;
 
-        private List<Product> products = new List<Product>();
+        //private List<Product> products = new List<Product>();
 
         public Product(string name, int id, float price, int qty)
         {

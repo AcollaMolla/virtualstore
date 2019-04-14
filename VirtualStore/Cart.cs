@@ -8,27 +8,45 @@ namespace VirtualStore
 {
     class Cart
     {
-        private int productId;
-        private int qty = 0;
-        Stack<int> testProductId = new Stack<int>();
-        Stack<int> testQty = new Stack<int>();
-       // Product product = new Product();
+        private static List<Product> products = new List<Product>();
 
-        public void addProduct(int id, int qty)
+        public void addProduct(string name, int id, float price, int amount)
         {
-            testProductId.Push(id);
-            this.qty = this.qty + qty;
-            testQty.Push(qty);
+            if (!productAlreadyExist(id))
+            {
+                products.Add(new Product(name, id, price, amount));
+                Console.WriteLine("Product added to cart");
+            }
+            else
+                incrementAmount(id);
         }
 
-        public Stack<int> getProductId()
+        private bool productAlreadyExist(int id)
         {
-            return testProductId;
+            if (products == null)
+                return false;
+            foreach (Product p in products)
+            {
+                if (p.ID == id)
+                    return true;
+            }
+            return false;
         }
 
-        public Stack<int> getQty()
+        private void incrementAmount(int id)
         {
-            return testQty;
+            foreach (Product p in products)
+            {
+                if (p.ID == id)
+                {
+                    p.QTY++;
+                }
+            }
+        }
+
+        public List<Product> getAllProducts()
+        {
+            return products;
         }
     }
 }

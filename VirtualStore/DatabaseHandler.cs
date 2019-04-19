@@ -22,9 +22,14 @@ namespace VirtualStore
             }
         }
 
-        public void readFromCSV()
+        public List<Product> readFromCSV()
         {
-            //TODO
+            using (var reader = new StreamReader("store.csv"))
+            using (var csv = new CsvReader(reader))
+            {
+                var records = csv.GetRecords<Product>();
+                return records.ToList();
+            }
         }
     }
 }

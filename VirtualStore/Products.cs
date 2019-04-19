@@ -86,5 +86,10 @@ namespace VirtualStore
             var itemToRemove = products.Single(r => r.ID == id);
             products.Remove(itemToRemove);
         }
+
+        public void setProductsList(List<Product> list)
+        {
+            products = list;
+        }
     }
 }

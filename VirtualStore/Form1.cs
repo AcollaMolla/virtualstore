@@ -19,6 +19,7 @@ namespace VirtualStore
         private string[] row;
         private Products products;
         DatabaseHandler databaseHandler;
+        private bool newData = false;
         public Form1()
         {
             InitializeComponent();
@@ -33,11 +34,13 @@ namespace VirtualStore
         {
             addNewProduct.ShowDialog();
             productListUpdated();
+            newData = true;
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            products.addTestProduct();
+            //products.addTestProduct();
+            products.setProductsList(databaseHandler.readFromCSV());
             productListUpdated();
         }
 
@@ -56,6 +59,7 @@ namespace VirtualStore
                 productListUpdated();
                 cartListUpdated();
                 button1.Enabled = false;
+                newData = true;
             }
             else
                 button1.Enabled = false;
@@ -140,6 +144,7 @@ namespace VirtualStore
                 ListViewItem item = listView3.SelectedItems[0];
                 products.removeProduct(Convert.ToInt32(item.SubItems[1].Text));
                 productListUpdated();
+                newData = true;
             }
             else if (dialogResult == DialogResult.No) { }
         }
@@ -150,21 +155,26 @@ namespace VirtualStore
             addDelivery = new AddDelivery(Convert.ToInt32(item.SubItems[1].Text));
             addDelivery.ShowDialog();
             productListUpdated();
+            newData = true;
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("There is unsaved data. Save it now?", "Warning!", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
+            if (newData)
             {
-                databaseHandler.writeToCSV(products.getAllProducts());
+                DialogResult dialogResult = MessageBox.Show("There is unsaved data. Save it now?", "Warning!", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    databaseHandler.writeToCSV(products.getAllProducts());
+                }
+                else if (dialogResult == DialogResult.No) { }
             }
-            else if (dialogResult == DialogResult.No) { }
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             databaseHandler.writeToCSV(products.getAllProducts());
+            newData = false;
         }
     }
 }

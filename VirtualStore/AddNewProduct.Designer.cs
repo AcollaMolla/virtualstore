@@ -107,6 +107,7 @@
             // textBox3
             // 
             this.textBox3.Location = new System.Drawing.Point(94, 38);
+            this.textBox3.MaxLength = 6;
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(313, 20);
             this.textBox3.TabIndex = 9;
@@ -114,6 +115,7 @@
             // textBox4
             // 
             this.textBox4.Location = new System.Drawing.Point(104, 88);
+            this.textBox4.MaxLength = 6;
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(303, 20);
             this.textBox4.TabIndex = 10;
@@ -144,6 +146,7 @@
             this.Controls.Add(this.textBox1);
             this.Name = "AddNewProduct";
             this.Text = "AddNewProduct";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AddNewProduct_FormClosing);
             this.Load += new System.EventHandler(this.AddNewProduct_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

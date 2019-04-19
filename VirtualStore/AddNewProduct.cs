@@ -37,7 +37,29 @@ namespace VirtualStore
 
         private void button1_Click(object sender, EventArgs e)
         {
+            int id;
+            decimal price;
+            int qty;
+            if (!int.TryParse(textBox3.Text, out id))
+            {
+                MessageBox.Show("'Product ID' must be a numerical value (0-999999)!");
+                return;
+            }
+            else if (!decimal.TryParse(textBox2.Text, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out price))
+            {
+                MessageBox.Show("'Product price' must be a numerical value!");
+                return;
+            }
+            else if(!int.TryParse(textBox4.Text, out qty)){
+                MessageBox.Show("'Product quantity' must be a numerical value (0-999999)!");
+                return;
+            }
             products.addProduct(textBox1.Text, Convert.ToInt32(textBox3.Text), float.Parse(textBox2.Text, CultureInfo.InvariantCulture.NumberFormat), Convert.ToInt32(textBox4.Text));
+            textBox1.Text = "";
+            textBox2.Text = "";
+            textBox3.Text = "";
+            textBox4.Text = "";
+            Hide();
         }
 
         private void AddNewProduct_Load(object sender, EventArgs e)
@@ -48,6 +70,15 @@ namespace VirtualStore
         private void label2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void AddNewProduct_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                e.Cancel = true;
+                Hide();
+            }
         }
     }
 }

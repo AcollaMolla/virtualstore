@@ -60,5 +60,15 @@ namespace VirtualStore
         {
             return products;
         }
+
+        public bool isQtyZero(int id)
+        {
+            foreach (Product p in products)
+            {
+                if (p.ID == id && p.QTY <= 0)
+                    return true;
+            }
+            return false;
+        }
     }
 }

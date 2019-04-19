@@ -37,6 +37,15 @@ namespace VirtualStore
             return products;
         }
 
+        public void updateQty(int id, int qty)
+        {
+            foreach(Product p in products)
+            {
+                if(p.ID == id)
+                    p.QTY += qty;
+            }
+        }
+
         private bool productAlreadyExist(int id) //Consider making this return a int. 0=product already exist. 1=product don't exist. 2=product with same name exist, give user a warning
         {
             if (products == null)
@@ -45,10 +54,13 @@ namespace VirtualStore
             {
                 if (p.ID == id)
                     return true;
-                else
-                    return false;
             }
             return false;
+        }
+
+        public void addTestProduct()
+        {
+            addProduct("Test_product", 0, 100, 5);
         }
 
         public void decrementProduct(int id)
@@ -57,6 +69,22 @@ namespace VirtualStore
                 if (p.ID == id && p.QTY > 0)
                     p.QTY--;
             }
+        }
+
+        public bool isQtyZero(int id)
+        {
+            foreach (Product p in products)
+            {
+                if (p.ID == id && p.QTY <= 0)
+                return true;
+            }
+            return false;
+        }
+
+        public void removeProduct(int id)
+        {
+            var itemToRemove = products.Single(r => r.ID == id);
+            products.Remove(itemToRemove);
         }
     }
 }

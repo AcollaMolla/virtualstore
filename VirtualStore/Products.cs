@@ -46,7 +46,7 @@ namespace VirtualStore
             }
         }
 
-        private bool productAlreadyExist(int id) //Consider making this return a int. 0=product already exist. 1=product don't exist. 2=product with same name exist, give user a warning
+        public bool productAlreadyExist(int id) //Consider making this return a int. 0=product already exist. 1=product don't exist. 2=product with same name exist, give user a warning
         {
             if (products == null)
                 return false;

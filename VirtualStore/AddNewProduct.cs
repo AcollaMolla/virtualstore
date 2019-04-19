@@ -54,6 +54,11 @@ namespace VirtualStore
                 MessageBox.Show("'Product quantity' must be a numerical value (0-999999)!");
                 return;
             }
+            else if (products.productAlreadyExist(Convert.ToInt32(textBox3.Text)))
+            {
+                MessageBox.Show("Product ID already exist! Choose another!");
+                return;
+            }
             products.addProduct(textBox1.Text, Convert.ToInt32(textBox3.Text), float.Parse(textBox2.Text, CultureInfo.InvariantCulture.NumberFormat), Convert.ToInt32(textBox4.Text));
             textBox1.Text = "";
             textBox2.Text = "";

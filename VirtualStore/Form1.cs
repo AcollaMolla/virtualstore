@@ -130,32 +130,41 @@ namespace VirtualStore
                 button2.Enabled = true;
         }
 
-        private void listView3_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            removeProductToolStripMenuItem.Enabled = true;
-            addDeliveryToolStripMenuItem.Enabled = true;
-        }
-
         private void removeProductToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("This action will permanently remove this product. Do you wan't to continue?", "Warning!", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
+            try
             {
-                ListViewItem item = listView3.SelectedItems[0];
-                products.removeProduct(Convert.ToInt32(item.SubItems[1].Text));
-                productListUpdated();
-                newData = true;
+                DialogResult dialogResult = MessageBox.Show("This action will permanently remove this product. Do you wan't to continue?", "Warning!", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+
+                    ListViewItem item = listView3.SelectedItems[0];
+                    products.removeProduct(Convert.ToInt32(item.SubItems[1].Text));
+                    productListUpdated();
+                    newData = true;
+                }
+                else if (dialogResult == DialogResult.No) { }
             }
-            else if (dialogResult == DialogResult.No) { }
+            catch
+            {
+                System.Windows.Forms.MessageBox.Show("Please select the product you wan't to remove!");
+            }
         }
 
         private void addDeliveryToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ListViewItem item = listView3.SelectedItems[0];
-            addDelivery = new AddDelivery(Convert.ToInt32(item.SubItems[1].Text));
-            addDelivery.ShowDialog();
-            productListUpdated();
-            newData = true;
+            try
+            {
+                ListViewItem item = listView3.SelectedItems[0];
+                addDelivery = new AddDelivery(Convert.ToInt32(item.SubItems[1].Text));
+                addDelivery.ShowDialog();
+                productListUpdated();
+                newData = true;
+            }
+            catch
+            {
+                System.Windows.Forms.MessageBox.Show("Please select the product you wan't to add delivery for!");
+            }
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
@@ -175,6 +184,13 @@ namespace VirtualStore
         {
             databaseHandler.writeToCSV(products.getAllProducts());
             newData = false;
+        }
+
+        private void listView3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Console.Out.WriteLine("changed");
+            removeProductToolStripMenuItem.Enabled = true;
+            addDeliveryToolStripMenuItem.Enabled = true;
         }
     }
 }

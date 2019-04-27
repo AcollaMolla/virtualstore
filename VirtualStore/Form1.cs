@@ -111,22 +111,34 @@ namespace VirtualStore
                 }
             }
             button2.Enabled = false;
+            if (cart.getAllProducts().Count > 0) button3.Enabled = true;
+            else if (cart.getAllProducts().Count <= 0)
+            {
+                button3.Enabled = false;
+            }
         }
 
         private void button2_Click_2(object sender, EventArgs e)
         {
-            ListViewItem item = listView2.SelectedItems[0];
-            if(!cart.isQtyZero(Convert.ToInt32(item.SubItems[3].Text)))
-                products.addProduct(item.SubItems[0].Text, Convert.ToInt32(item.SubItems[3].Text), float.Parse(item.SubItems[1].Text, CultureInfo.InvariantCulture.NumberFormat),1);
-            cart.decrementProduct(Convert.ToInt32(item.SubItems[3].Text));
-            productListUpdated();
-            cartListUpdated();
-            button1.Enabled = false;
+            try
+            {
+                ListViewItem item = listView2.SelectedItems[0];
+                if (!cart.isQtyZero(Convert.ToInt32(item.SubItems[3].Text)))
+                    products.addProduct(item.SubItems[0].Text, Convert.ToInt32(item.SubItems[3].Text), float.Parse(item.SubItems[1].Text, CultureInfo.InvariantCulture.NumberFormat), 1);
+                cart.decrementProduct(Convert.ToInt32(item.SubItems[3].Text));
+                productListUpdated();
+                cartListUpdated();
+                button1.Enabled = false;
+            }
+            catch
+            {
+                MessageBox.Show("Select a item in the cart to remove!", "Error!");
+            }
         }
 
         private void listView2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(listView2.SelectedItems[0].Text != null || !listView2.SelectedItems[0].Text.Equals(""))
+            //if(listView2.SelectedItems[0].Text != null || !listView2.SelectedItems[0].Text.Equals(""))
                 button2.Enabled = true;
         }
 
@@ -191,6 +203,20 @@ namespace VirtualStore
             Console.Out.WriteLine("changed");
             removeProductToolStripMenuItem.Enabled = true;
             addDeliveryToolStripMenuItem.Enabled = true;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Are you sure you want to checkout already?", "Checkout! Attention!", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                cart.checkout();
+                cartListUpdated();
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+                return;
+            }
         }
     }
 }

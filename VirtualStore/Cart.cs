@@ -54,6 +54,7 @@ namespace VirtualStore
                 if (p.ID == id && p.QTY > 0)
                     p.QTY--;
             }
+            removeProductsWithZeroQty();
         }
 
         public List<Product> getAllProducts()
@@ -69,6 +70,20 @@ namespace VirtualStore
                     return true;
             }
             return false;
+        }
+
+        public void checkout()
+        {
+            products.Clear();
+        }
+
+        private void removeProductsWithZeroQty()
+        {
+            var itemToRemove = products.FindAll(p => p.QTY == 0);
+            foreach(var i in itemToRemove)
+            {
+                products.Remove(i);
+            }
         }
     }
 }

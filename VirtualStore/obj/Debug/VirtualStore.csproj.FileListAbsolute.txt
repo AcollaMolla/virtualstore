@@ -8,8 +8,6 @@ C:\Users\antoengm100\source\repos\virtualstore\VirtualStore\obj\Debug\VirtualSto
 C:\Users\antoengm100\source\repos\virtualstore\VirtualStore\bin\Debug\VirtualStore.exe.config
 C:\Users\antoengm100\source\repos\virtualstore\VirtualStore\bin\Debug\VirtualStore.exe
 C:\Users\antoengm100\source\repos\virtualstore\VirtualStore\bin\Debug\VirtualStore.pdb
-C:\Users\antoengm100\source\repos\virtualstore\VirtualStore\bin\Debug\CsvHelper.dll
-C:\Users\antoengm100\source\repos\virtualstore\VirtualStore\bin\Debug\CsvHelper.xml
 C:\Users\antoengm100\source\repos\virtualstore\VirtualStore\obj\Debug\VirtualStore.csproj.CopyComplete
 C:\Users\antoengm100\source\repos\virtualstore\VirtualStore\obj\Debug\VirtualStore.exe
 C:\Users\antoengm100\source\repos\virtualstore\VirtualStore\obj\Debug\VirtualStore.pdb

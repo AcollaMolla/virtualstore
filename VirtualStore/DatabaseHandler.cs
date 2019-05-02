@@ -8,8 +8,6 @@ namespace VirtualStore
 {
     class DatabaseHandler
     {
-        private int id;
-        private string name;
         public void writeToCSV(List<Product> list, string path)
         {
             using (var writer = new StreamWriter(path + "store.csv"))

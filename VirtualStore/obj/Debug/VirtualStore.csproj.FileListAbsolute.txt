@@ -1,0 +1,15 @@
+C:\Users\antoengm100\source\repos\virtualstore\VirtualStore\obj\Debug\VirtualStore.csprojAssemblyReference.cache
+C:\Users\antoengm100\source\repos\virtualstore\VirtualStore\obj\Debug\VirtualStore.AddDelivery.resources
+C:\Users\antoengm100\source\repos\virtualstore\VirtualStore\obj\Debug\VirtualStore.AddNewProduct.resources
+C:\Users\antoengm100\source\repos\virtualstore\VirtualStore\obj\Debug\VirtualStore.Form1.resources
+C:\Users\antoengm100\source\repos\virtualstore\VirtualStore\obj\Debug\VirtualStore.Properties.Resources.resources
+C:\Users\antoengm100\source\repos\virtualstore\VirtualStore\obj\Debug\VirtualStore.csproj.GenerateResource.cache
+C:\Users\antoengm100\source\repos\virtualstore\VirtualStore\obj\Debug\VirtualStore.csproj.CoreCompileInputs.cache
+C:\Users\antoengm100\source\repos\virtualstore\VirtualStore\bin\Debug\VirtualStore.exe.config
+C:\Users\antoengm100\source\repos\virtualstore\VirtualStore\bin\Debug\VirtualStore.exe
+C:\Users\antoengm100\source\repos\virtualstore\VirtualStore\bin\Debug\VirtualStore.pdb
+C:\Users\antoengm100\source\repos\virtualstore\VirtualStore\bin\Debug\CsvHelper.dll
+C:\Users\antoengm100\source\repos\virtualstore\VirtualStore\bin\Debug\CsvHelper.xml
+C:\Users\antoengm100\source\repos\virtualstore\VirtualStore\obj\Debug\VirtualStore.csproj.CopyComplete
+C:\Users\antoengm100\source\repos\virtualstore\VirtualStore\obj\Debug\VirtualStore.exe
+C:\Users\antoengm100\source\repos\virtualstore\VirtualStore\obj\Debug\VirtualStore.pdb

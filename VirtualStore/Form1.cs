@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -39,8 +40,9 @@ namespace VirtualStore
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //products.addTestProduct();
-            products.setProductsList(databaseHandler.readFromCSV());
+            products.addTestProduct();
+            if(databaseHandler.readFromCSV("store.csv") != null)
+                products.setProductsList(databaseHandler.readFromCSV("store.csv"));
             productListUpdated();
         }
 
@@ -72,26 +74,29 @@ namespace VirtualStore
 
         public void productListUpdated()
         {
-            listView1.Items.Clear();
-            foreach (Product p in products.getAllProducts())
+            if (products.getAllProducts() != null)
             {
-                row[0] = p.Name;
-                row[1] = p.ID.ToString();
-                row[2] = p.Price.ToString();
-                row[3] = p.QTY.ToString();
-                ListViewItem item = new ListViewItem(row);
-                listView1.Items.Add(item);
-            }
+                listView1.Items.Clear();
+                foreach (Product p in products.getAllProducts())
+                {
+                    row[0] = p.Name;
+                    row[1] = p.ID.ToString();
+                    row[2] = p.Price.ToString();
+                    row[3] = p.QTY.ToString();
+                    ListViewItem item = new ListViewItem(row);
+                    listView1.Items.Add(item);
+                }
 
-            listView3.Items.Clear();
-            foreach (Product p in products.getAllProducts())
-            {
-                row[0] = p.Name;
-                row[1] = p.ID.ToString();
-                row[2] = p.Price.ToString();
-                row[3] = p.QTY.ToString();
-                ListViewItem item = new ListViewItem(row);
-                listView3.Items.Add(item);
+                listView3.Items.Clear();
+                foreach (Product p in products.getAllProducts())
+                {
+                    row[0] = p.Name;
+                    row[1] = p.ID.ToString();
+                    row[2] = p.Price.ToString();
+                    row[3] = p.QTY.ToString();
+                    ListViewItem item = new ListViewItem(row);
+                    listView3.Items.Add(item);
+                }
             }
         }
 
@@ -186,7 +191,7 @@ namespace VirtualStore
                 DialogResult dialogResult = MessageBox.Show("There is unsaved data. Save it now?", "Warning!", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
-                    databaseHandler.writeToCSV(products.getAllProducts());
+                    databaseHandler.writeToCSV(products.getAllProducts(), "");
                 }
                 else if (dialogResult == DialogResult.No) { }
             }
@@ -194,7 +199,7 @@ namespace VirtualStore
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            databaseHandler.writeToCSV(products.getAllProducts());
+            databaseHandler.writeToCSV(products.getAllProducts(), "");
             newData = false;
         }
 
@@ -217,6 +222,23 @@ namespace VirtualStore
             {
                 return;
             }
+        }
+
+        private void exportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            databaseHandler.writeToCSV(products.getAllProducts(), ""); //Save the inventory first
+            saveFileDialog1.Filter = "CSV | *.csv";
+            saveFileDialog1.ShowDialog();
+            databaseHandler.export(Path.GetFullPath(saveFileDialog1.FileName));
+            newData = false;
+        }
+
+        private void importToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.Filter = "CSV | *.csv";
+            openFileDialog1.ShowDialog();
+            products.setProductsList(databaseHandler.readFromCSV(Path.GetFullPath(openFileDialog1.FileName)));
+            productListUpdated();
         }
     }
 }

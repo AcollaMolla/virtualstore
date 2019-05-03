@@ -10,7 +10,7 @@ namespace VirtualStore
     {
         private static List<Product> products = new List<Product>();
 
-        public void addProduct(string name, int id, float price, int amount, int amountLeft)
+        public void addProduct(string name, int id, string price, int amount, int amountLeft)
         {
             if (!productAlreadyExist(id))
             {

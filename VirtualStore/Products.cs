@@ -15,7 +15,7 @@ namespace VirtualStore
         {
         }
 
-        public void addProduct(string name, int id, float price, int qty)
+        public void addProduct(string name, int id, string price, int qty)
         {
             if (!productAlreadyExist(id))
             {
@@ -60,7 +60,7 @@ namespace VirtualStore
 
         public void addTestProduct()
         {
-            addProduct("Test_product", 0, 100, 5);
+            addProduct("Test_product", 0, "100", 5);
         }
 
         public void decrementProduct(int id)

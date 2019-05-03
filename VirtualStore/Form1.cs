@@ -56,7 +56,7 @@ namespace VirtualStore
             if (listView1.SelectedItems[0].Text != null || !listView1.SelectedItems[0].Text.Equals(""))
             {
                 ListViewItem item = listView1.SelectedItems[0];
-                cart.addProduct(item.SubItems[0].Text, Convert.ToInt32(item.SubItems[1].Text), float.Parse(item.SubItems[2].Text, NumberStyles.Any, (CultureInfo)CultureInfo.CurrentCulture.Clone()), 1, Convert.ToInt32(item.SubItems[3].Text));
+                cart.addProduct(item.SubItems[0].Text, Convert.ToInt32(item.SubItems[1].Text), item.SubItems[2].Text, 1, Convert.ToInt32(item.SubItems[3].Text));
                 products.decrementProduct(Convert.ToInt32(item.SubItems[1].Text));
                 productListUpdated();
                 cartListUpdated();
@@ -129,7 +129,7 @@ namespace VirtualStore
             {
                 ListViewItem item = listView2.SelectedItems[0];
                 if (!cart.isQtyZero(Convert.ToInt32(item.SubItems[3].Text)))
-                    products.addProduct(item.SubItems[0].Text, Convert.ToInt32(item.SubItems[3].Text), float.Parse(item.SubItems[1].Text, CultureInfo.InvariantCulture.NumberFormat), 1);
+                    products.addProduct(item.SubItems[0].Text, Convert.ToInt32(item.SubItems[3].Text), item.SubItems[1].Text, 1);
                 cart.decrementProduct(Convert.ToInt32(item.SubItems[3].Text));
                 productListUpdated();
                 cartListUpdated();

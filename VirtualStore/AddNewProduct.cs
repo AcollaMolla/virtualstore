@@ -39,13 +39,15 @@ namespace VirtualStore
         {
             int id;
             decimal price;
+            string text;
             int qty;
+            text = textBox2.Text.Replace('.', ',');
             if (!int.TryParse(textBox3.Text, out id))
             {
                 MessageBox.Show("'Product ID' must be a numerical value (0-999999)!");
                 return;
             }
-            else if (!decimal.TryParse(textBox2.Text, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out price))
+            else if (!decimal.TryParse(text, NumberStyles.Any, CultureInfo.InvariantCulture, out price))
             {
                 MessageBox.Show("'Product price' must be a numerical value!");
                 return;
@@ -59,7 +61,7 @@ namespace VirtualStore
                 MessageBox.Show("Product ID already exist! Choose another!");
                 return;
             }
-            products.addProduct(textBox1.Text, Convert.ToInt32(textBox3.Text), float.Parse(textBox2.Text, CultureInfo.InvariantCulture.NumberFormat), Convert.ToInt32(textBox4.Text));
+            products.addProduct(textBox1.Text, Convert.ToInt32(textBox3.Text), textBox2.Text, Convert.ToInt32(textBox4.Text));
             textBox1.Text = "";
             textBox2.Text = "";
             textBox3.Text = "";

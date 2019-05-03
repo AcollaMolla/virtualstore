@@ -1,4 +1,3 @@
-C:\Users\antoengm100\source\repos\virtualstore\VirtualStore\obj\Debug\VirtualStore.csprojAssemblyReference.cache
 C:\Users\antoengm100\source\repos\virtualstore\VirtualStore\obj\Debug\VirtualStore.AddDelivery.resources
 C:\Users\antoengm100\source\repos\virtualstore\VirtualStore\obj\Debug\VirtualStore.AddNewProduct.resources
 C:\Users\antoengm100\source\repos\virtualstore\VirtualStore\obj\Debug\VirtualStore.Form1.resources

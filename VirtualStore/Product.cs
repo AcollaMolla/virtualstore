@@ -10,12 +10,12 @@ namespace VirtualStore
     {
         private string name;
         private int id;
-        private float price;
+        private string price;
         private int qty;
 
         //private List<Product> products = new List<Product>();
 
-        public Product(string name, int id, float price, int qty)
+        public Product(string name, int id, string price, int qty)
         {
             this.name = name;
             this.id = id;
@@ -52,7 +52,7 @@ namespace VirtualStore
             }
         }
 
-        public float Price
+        public string Price
         {
             get
             {
